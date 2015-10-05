@@ -1,16 +1,19 @@
 var fs = require('fs');
 var cheerio = require('cheerio');
-const SEL_WEEKS = '#region-main > div > div > ul',
-    SEL_WEEKS_ITEM_NAME = 'div.content > h3',
+
+//todo get relative path to where the files will be dumped
+const PAGE_PATH = 'page.html',
+    CATALOG_PATH = 'eportal-catalog.json',
+    SEL_WEEKS = '#region-main > div > div > ul',
     SEL_WEEKS_ITEM_FILES = 'div.content > ul',
     SEL_LINK = 'div > a';
 
 var parseDom = function () {
-    var $ = cheerio.load(fs.readFileSync('page.html'));
+    var $ = cheerio.load(fs.readFileSync(PAGE_PATH));
     return $($(SEL_WEEKS).html()).map(function (i, elem) {
         //var name = $(SEL_WEEKS_ITEM_NAME, elem).text().trim();
         //name = name.match(/.+\d+.+\d+.+/)? "Week "+i: "Announcements";
-        var name = "Week "+i;
+        var name = "Week " + i;
         // Have to reconstruct new Cheerio object via HTML
         var files = $($(SEL_WEEKS_ITEM_FILES, elem).html()).map(extractFiles($)).get();
 
@@ -47,6 +50,4 @@ var sanitizeFileName = function (name) {
 var cat = parseDom();
 
 // Write catalog for future syncing needs
-fs.writeFileSync('eportal-catalog.json',JSON.stringify(cat,null,'\t'));
-
-//console.log(JSON.parse(fs.readFileSync('eportal-catalog.json')));
+fs.writeFileSync(CATALOG_PATH, JSON.stringify(cat, null, '\t'));
