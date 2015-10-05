@@ -1,0 +1,94 @@
+[
+	{
+		"name": "14 September -  20 September",
+		"files": [
+			{
+				"name": "first lecture ML, revised version File",
+				"url": "http://edimension.sutd.edu.sg/mod/resource/view.php?id=44953"
+			},
+			{
+				"name": "first assignment for homework File",
+				"url": "http://edimension.sutd.edu.sg/mod/resource/view.php?id=44954"
+			},
+			{
+				"name": "lecture 2 - linear regression File",
+				"url": "http://edimension.sutd.edu.sg/mod/resource/view.php?id=45098"
+			}
+		]
+	},
+	{
+		"name": "21 September -  27 September",
+		"files": [
+			{
+				"name": "probability recap slides File",
+				"url": "http://edimension.sutd.edu.sg/mod/resource/view.php?id=45159"
+			},
+			{
+				"name": "recapitulation on gradients in multiple dimensions File",
+				"url": "http://edimension.sutd.edu.sg/mod/resource/view.php?id=45194"
+			},
+			{
+				"name": "recapitulation of regression lecture File",
+				"url": "http://edimension.sutd.edu.sg/mod/resource/view.php?id=45203"
+			}
+		]
+	},
+	{
+		"name": "28 September -  4 October",
+		"files": [
+			{
+				"name": "slides on gradient optimization File",
+				"url": "http://edimension.sutd.edu.sg/mod/resource/view.php?id=45315"
+			},
+			{
+				"name": "files for lectures on monday/tuesday",
+				"url": "http://edimension.sutd.edu.sg/mod/resource/view.php?id=45346"
+			},
+			{
+				"name": "one more file for monday/tuesday lecture",
+				"url": "http://edimension.sutd.edu.sg/mod/resource/view.php?id=45348"
+			},
+			{
+				"name": "one more file",
+				"url": "http://edimension.sutd.edu.sg/mod/resource/view.php?id=45349"
+			},
+			{
+				"name": "one more file again",
+				"url": "http://edimension.sutd.edu.sg/mod/resource/view.php?id=45350"
+			},
+			{
+				"name": "lecture on support vector machines, the first part File",
+				"url": "http://edimension.sutd.edu.sg/mod/resource/view.php?id=45495"
+			},
+			{
+				"name": "assignment 2 File",
+				"url": "http://edimension.sutd.edu.sg/mod/resource/view.php?id=45539"
+			},
+			{
+				"name": "one solution File",
+				"url": "http://edimension.sutd.edu.sg/mod/resource/view.php?id=45542"
+			},
+			{
+				"name": "learning a non linear boundary File",
+				"url": "http://edimension.sutd.edu.sg/mod/resource/view.php?id=45543"
+			},
+			{
+				"name": "code for unbalanced versus balanced optimization File",
+				"url": "http://edimension.sutd.edu.sg/mod/resource/view.php?id=45646"
+			},
+			{
+				"name": "why we cannot use gradient for zero one loss File",
+				"url": "http://edimension.sutd.edu.sg/mod/resource/view.php?id=46128"
+			}
+		]
+	},
+	{
+		"name": "5 October -  11 October",
+		"files": [
+			{
+				"name": "lecture on Support Vector Machines - part 2: kernels File",
+				"url": "http://edimension.sutd.edu.sg/mod/resource/view.php?id=46152"
+			}
+		]
+	}
+]
