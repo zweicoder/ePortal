@@ -8,7 +8,7 @@ const URL = 'http://edimension.sutd.edu.sg/course/view.php?id=1035', // todo get
     SEL_PASS = '#password',
     SEL_LOGIN_BUTTON = '#loginbtn';
 
-credentials = JSON.parse(fs.readFileSync(CREDENTIALS_PATH));
+var credentials = JSON.parse(fs.readFileSync(CREDENTIALS_PATH));
 
 if (!URL.match(/.+\/course\/.+/i)) {
     console.log("Please input a proper course URL e.g. http://edimension.sutd.edu.sg/course/view.php?id=1035");
@@ -16,7 +16,7 @@ if (!URL.match(/.+\/course\/.+/i)) {
 }
 // TODO check body on load / check for array of elements
 
-console.log("Deploying Revenant to" + URL + " ...");
+console.log("Dispatching Revenant to " + URL + " ...");
 var browser = new Revenant();
 browser
     .openPage(URL)
