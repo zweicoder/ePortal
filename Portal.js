@@ -1,60 +1,20 @@
-var Revenant = require('revenant');
 var fs = require('fs');
 var cheerio = require('cheerio');
-var _ = require('underscore');
-const LOGIN_URL = 'http://edimension.sutd.edu.sg/login/index.php', // todo get this from arg / json file
+var request = require('request');
+request = request.defaults({jar: true});
+
+const LOGIN_URL = 'http://edimension.sutd.edu.sg/login/index.php',
     CREDENTIALS_PATH = 'credentials.json',
-    SEL_FORM = '#login',
-    SEL_USER = '#username',
-    SEL_PASS = '#password',
-    SEL_LOGIN_BUTTON = '#loginbtn';
+    ROOT_PATH = 'C:\\Users\\User\\Dropbox\\Machine Learning 2015\\';
+//ROOT_PATH = 'files\\';
 
 var credentials = JSON.parse(fs.readFileSync(CREDENTIALS_PATH));
+var catalog = JSON.parse(fs.readFileSync('eportal-catalog.json'));
 
-// TODO Read from catalog and get list of urls from a summoner.js
-
-// Download the files
-//var targets=['http://edimension.sutd.edu.sg/mod/resource/view.php?id=45346'];
-var targets=['http://edimension.sutd.edu.sg/mod/resource/view.php?id=45346'];
-console.log("Logging in...");
-var browser = new Revenant();
-browser
-    .openPage(LOGIN_URL)
-    .then(function () {
-        // Assume we will always be redirected to login page every time
-        return browser.waitForElement(SEL_FORM);
-    })
-    .then(function () {
-        browser.fillForm(SEL_USER, credentials.username);
-        browser.fillForm(SEL_PASS, credentials.password);
-        return browser.clickElement(SEL_LOGIN_BUTTON, 1);
-    })
-    // Skipping login checks cause credentials have to be valid to be at this stage
-    .then(function () {
-        console.log("Opening Portal to " + targets[0] + " ...");
-        return browser.navigateToUrl(targets[0]);
-    })
-    .catch(function (e) {
-        // Catch the response and see if it's a document on error
-        var lastResponse = browser.getLastResponse();
-        var contentType = _.find(lastResponse.headers, function (elem) {
-            return elem.name.toLowerCase() === 'Content-Type'.toLowerCase()
-        });
-        if(contentType && contentType.value.match(/document/)){
-            console.log(lastResponse.url);
-            // TODO collate all (fileName, links) and pipe to request
-        }
-        //TODO what to do otherwise
-        return browser.getUrl()
-    })
-    .then(function (dom) {
-        console.log(dom);
-        browser.done()
-    })
-    .fail(function (error) {
-        console.log("Error: ", error);
-        browser.done();
-    });
+var formData = {
+    username: credentials.username,
+    password: credentials.password
+};
 
 var loginOpts = {
     method: 'POST',
@@ -67,17 +27,51 @@ var loginOpts = {
     formData: formData,
     followAllRedirects: true
 };
-var downloadFiles = function(files){
+
+// Gets resource (most likely PDF) link from DOM
+var getResourceUrl = function (body) {
+    var $ = cheerio.load(body);
+    return $('#resourceobject').attr('data')
+};
+
+var sanitize = function (inp) {
+    return inp.replace(/[\//'":]/g, "-"); //TODO incomplete cuz lazy
+};
+
+var downloadFolder = function (folder) {
+    var folderName = ROOT_PATH + folder.name;
+    if (!fs.existsSync(folderName)) {
+        fs.mkdirSync(folderName)
+    }
+    folder.files.forEach(function (file) {
+        var fileName = folderName + "\\" + sanitize(file.name);
+        request(file.url, function (e, response, body) {
+            var contentType = response.headers['content-type'];
+            // If this link is a file, write out the body
+            if (contentType && contentType.match(/document/)) {
+                var ext = response.headers['content-disposition'].match(/\.[0-9a-z]+/i)[0];
+                fileName = fileName + ext;
+                console.log("Summoning: ", fileName);
+                fs.writeFileSync(fileName, body);
+            }
+            // else we get the resource link from the DOM
+            else if (url = getResourceUrl(body)) {
+                var ext = url.match(/\.[0-9a-z]+$/i)[0];
+                fileName = fileName + ext;
+                console.log("Summoning: ", fileName);
+                request(url).pipe(fs.createWriteStream(fileName));
+            }
+        })
+    });
+};
+
+var openPortal = function (catalog) {
+    console.log("Opening Portal with Incantations...")
     request(loginOpts, function (error, response, body) {
         if (error) throw new Error(error);
-        // TODO get tuple of fileName , link
-        // TODO download all files here
-        // for all links limit to 5 send get request and queue others
-        _.each(files, function () {
-            // send to queue
-            request(files.url)
-                .pipe(fs.createWriteStream(files.name));
-        });
+        catalog.forEach(downloadFolder);
 
     });
 };
+
+openPortal(catalog);
