@@ -11,14 +11,11 @@ const PAGE_PATH = 'page.html',
 var parseDom = function () {
     var $ = cheerio.load(fs.readFileSync(PAGE_PATH));
     return $($(SEL_WEEKS).html()).map(function (i, elem) {
-        //var name = $(SEL_WEEKS_ITEM_NAME, elem).text().trim();
-        //name = name.match(/.+\d+.+\d+.+/)? "Week "+i: "Announcements";
         var name = "Week " + i;
         // Have to reconstruct new Cheerio object via HTML
         var files = $($(SEL_WEEKS_ITEM_FILES, elem).html()).map(extractFiles($)).get();
 
         if (files && files.length != 0) {
-
             return {
                 name: name,
                 files: files
@@ -43,9 +40,11 @@ var extractFiles = function ($) {
 };
 
 var sanitizeFileName = function (name) {
-    return name.replace(" File", "")
+    // Retarded eDimension format
+    return name.replace(" File File", "")
 };
 
+console.log("Preparing incantations...");
 // Exports a catalog
 var cat = parseDom();
 
