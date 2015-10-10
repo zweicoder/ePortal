@@ -1,7 +1,6 @@
 const USERNAME = '',
     PASSWORD = '',
     FOLDER = 'C:\\Users\\User\\Dropbox\\courses',
-    //FOLDER = 'files',
     COURSES = [
         {
             name: 'Machine Learning 2015',
