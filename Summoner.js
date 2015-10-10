@@ -1,7 +1,7 @@
-var Minion = require('./Minion');
-var Settings = require('../settings');
-var helpers = require('./helpers');
-var Portal = require('./Portal');
+var Minion = require('./lib/Minion');
+var Settings = require('./settings');
+var helpers = require('./lib/helpers');
+var Portal = require('./lib/Portal');
 
 const COURSES = Settings.COURSES;
 
