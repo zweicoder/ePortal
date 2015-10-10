@@ -1,6 +1,7 @@
 const USERNAME = '',
     PASSWORD = '',
-    FOLDER = 'C:\\Users\\User\\Dropbox\\courses\\',
+    FOLDER = 'C:\\Users\\User\\Dropbox\\courses',
+    //FOLDER = 'files',
     COURSES = [
         {
             name: 'Machine Learning 2015',
@@ -16,9 +17,9 @@ module.exports = {
     USERNAME: USERNAME,
     PASSWORD: PASSWORD,
     LOGIN_URL: 'http://edimension.sutd.edu.sg/login/index.php',
-    ROOT_PATH: FOLDER,
+    ROOT_PATH: FOLDER+"\\",
     COURSES: COURSES,
-    LOGINOPTS: {
+    LOGIN_OPTS: {
         method: 'POST',
         url: 'http://edimension.sutd.edu.sg/login/index.php',
         headers: {
