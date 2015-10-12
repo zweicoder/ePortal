@@ -1,6 +1,10 @@
 {
+ "name"    : "ePortal",
+  "version" : "0.1.0",
+  "main"    : "Summoner.js",
+  "homepage":"https://github.com/zweicoder/ePortal"
   "dependencies": {
-    "revenant": "^0.2.2",
-    "cheerio": "^0.19.0"
+    "cheerio": "^0.19.0",
+	"underscore": "^1.8.3"
   }
 }
