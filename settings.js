@@ -1,6 +1,7 @@
 const USERNAME = '',
     PASSWORD = '',
-    FOLDER = 'C:\\Users\\User\\Dropbox\\courses',
+    FOLDER = 'D:/time2code/repos/ePortal/lib/files',
+//FOLDER = 'files',
     COURSES = [
         {
             name: 'Machine Learning 2015',
@@ -10,13 +11,19 @@ const USERNAME = '',
             name: 'Database 2015',
             url: 'http://edimension.sutd.edu.sg/course/view.php?id=1036'
         }
+        /*,
+         {
+         name: 'SAGES 2015',
+         url: 'http://edimension.sutd.edu.sg/course/view.php?id=982'
+         }*/
     ];
 
+var path = require('path');
 module.exports = {
     USERNAME: USERNAME,
     PASSWORD: PASSWORD,
     LOGIN_URL: 'http://edimension.sutd.edu.sg/login/index.php',
-    ROOT_PATH: FOLDER+"\\",
+    ROOT_PATH: path.normalize(FOLDER),
     COURSES: COURSES,
     LOGIN_OPTS: {
         method: 'POST',

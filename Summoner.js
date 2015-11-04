@@ -8,7 +8,7 @@ const COURSES = Settings.COURSES;
 // Initialize all folders at target path / folder
 helpers.mkdir(Settings.ROOT_PATH);
 COURSES.forEach(function (course) {
-    var folderName = Settings.ROOT_PATH + course.name;
+    var folderName = helpers.join(Settings.ROOT_PATH, course.name);
     helpers.mkdir(folderName);
     Minion.dispatch(course, Portal.open)
 });
