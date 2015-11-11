@@ -1,6 +1,8 @@
+var path = require('path');
+
 const USERNAME = '',
     PASSWORD = '',
-    FOLDER = 'D:/time2code/repos/ePortal/lib/files',
+    FOLDER = path.join(__dirname, '/out'),
 //FOLDER = 'files',
     COURSES = [
         {
@@ -18,7 +20,7 @@ const USERNAME = '',
          }*/
     ];
 
-var path = require('path');
+
 module.exports = {
     USERNAME: USERNAME,
     PASSWORD: PASSWORD,
