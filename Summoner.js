@@ -17,11 +17,9 @@ function summon(username, password, directory) {
     }
 
     console.log('Summoning to location: ' + savePath);
-    Settings.USERNAME = username || Settings.USERNAME;
-    Settings.PASSWORD = password || Settings.PASSWORD;
     Settings.ROOT_PATH = path.normalize(savePath) || Settings.ROOT_PATH;
-    Settings.LOGIN_OPTS.formData.username = username || Settings.LOGIN_OPTS.formData.username;
-    Settings.LOGIN_OPTS.formData.password = password || Settings.LOGIN_OPTS.formData.password;
+    Settings.LOGIN_OPTS.formData.username = username;
+    Settings.LOGIN_OPTS.formData.password = password;
 
     const COURSES = Settings.COURSES;
 

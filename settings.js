@@ -1,9 +1,6 @@
 var path = require('path');
 
-const USERNAME = '',
-    PASSWORD = '',
-    FOLDER = path.join(__dirname, '/out'),
-//FOLDER = 'files',
+const FOLDER = 'C:\\Users\\User\\Dropbox\\courses',
     COURSES = [
         {
             name: 'Machine Learning 2015',
@@ -22,8 +19,6 @@ const USERNAME = '',
 
 
 module.exports = {
-    USERNAME: USERNAME,
-    PASSWORD: PASSWORD,
     LOGIN_URL: 'http://edimension.sutd.edu.sg/login/index.php',
     ROOT_PATH: path.normalize(FOLDER),
     COURSES: COURSES,
