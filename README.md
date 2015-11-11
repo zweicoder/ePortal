@@ -3,7 +3,24 @@ A Summoning portal for files on eDimension. Sync files from courses on eDimensio
 
 Built on [~~Revenant~~](https://github.com/skewedlines/Revenant) and [request](https://www.npmjs.com/package/request) as an experiment and practice with Node.js.
 
-### Usage
+## Usage
+
+### Command line
+#### Installation
+
+```bash
+$ npm install -g eportal
+```
+
+#### Usage
+
+```bash
+$ eportal <username> <password> <directory>
+```
+
+Depending on how `settings.js` is configured, ePortal will save the relevant data to the correct directory.
+
+#### Clone the Repository
 
 Install Dependencies
 
@@ -13,5 +30,7 @@ $ npm install
 
 Change the parameters in `settings.js`, then run `node Summoner.js`
 
-### TODO
+## TODO
 - Modularize / natify
+- Put more options of `settings.js` in the CLI
+
