@@ -20,7 +20,7 @@ $ eportal <username> <password> <directory>
 
 Depending on how `settings.js` is configured, ePortal will save the relevant data to the correct directory.
 
-#### Clone the Repository
+### Clone the Repository
 
 Install Dependencies
 
