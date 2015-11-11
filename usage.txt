@@ -1,0 +1,9 @@
+Usage: eportal <username> <password> <path>
+
+Required options
+
+username           your username
+password           your path
+path               path to the annotated file, with noun phrases surrounded by '{' and '}'
+
+Example            eportal myusername mypassword .
