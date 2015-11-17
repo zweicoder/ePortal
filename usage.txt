@@ -6,6 +6,6 @@ Required options
 
 username           your username
 password           your path
-path               path to the file (Optional, defaults to folder specified in settings.js)
+path               path to the file relative to current directory (Optional, defaults to folder specified in settings.js)
 
 Example            cd path/to/output/files && eportal myusername mypassword . // install everything into path/to/output/files
