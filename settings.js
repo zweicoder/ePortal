@@ -31,8 +31,8 @@ module.exports = {
             'content-type': 'multipart/form-data; boundary=---011000010111000001101001'
         },
         formData: {
-            username: USERNAME,
-            password: PASSWORD
+            username: '',
+            password: ''
         },
         followAllRedirects: true
     }
