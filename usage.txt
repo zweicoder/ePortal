@@ -6,6 +6,6 @@ Required options
 
 username           your username
 password           your path
-path               path to the annotated file, with noun phrases surrounded by '{' and '}'
+path               path to the file (Optional, defaults to folder specified in settings.js)
 
 Example            eportal myusername mypassword .
