@@ -10,9 +10,9 @@ function summon(username, password, directory) {
         savePath = Settings.ROOT_PATH;
     } else {
         if (directory === '.') {
-            savePath = __dirname;
+            savePath = process.cwd();
         } else {
-            savePath = path.join(__dirname, directory)
+            savePath = path.join(process.cwd(), directory)
         }
     }
 
