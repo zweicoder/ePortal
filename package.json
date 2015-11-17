@@ -4,7 +4,7 @@
   "main": "Summoner.js",
   "homepage": "https://github.com/zweicoder/ePortal",
   "bin": {
-    "eportal": "node cli.js"
+    "eportal": "cli.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
