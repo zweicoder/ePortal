@@ -1,4 +1,6 @@
-Usage: eportal <username> <password> <path>
+Usage: eportal <username> <password> <path> // if installed with -g
+
+Otherwise cd path/toRepo and run node cli.js <username> <password> <path>
 
 Required options
 

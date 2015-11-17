@@ -2,7 +2,7 @@ var arguments = process.argv.slice(2);
 var fs = require('fs');
 var usage = fs.readFileSync(__dirname + '/usage.txt').toString();
 
-if (arguments.length <= 0) {
+if (arguments.length < 3) {
     console.error(usage);
     return;
 }
